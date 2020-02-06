@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const copyPlugin = require('copy-webpack-plugin');
 
 const env = process.env.NODE_ENV;
 
@@ -12,14 +13,14 @@ module.exports = {
   mode: env,
 
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.join(__dirname, './dist'),
     filename: '[name].bundle.js',
-    publicPath: './'
+    publicPath: ''
   },
 
   devServer: {
     open: true,
-    contentBase: path.join(__dirname, 'public'),
+    contentBase: path.join(__dirname,'/public'),
     compress: true,
     port: 3500,
     hot: true,
@@ -32,6 +33,16 @@ module.exports = {
         loader: 'babel-loader',
         exclude: /node_modules/,
         
+      },
+      {
+        test: /\.(jpg|png|svg|gif|jpeg)$/,
+        use: 'file-loader',
+        // loader: 'file-loader',
+        // options: {
+          // name: '[name][contenthash:6].[ext]',
+          // outputPath: 'images',
+          // publicPath: '../images'
+        // }
       },
       {
         test: /\.(sa|sc|c)ss$/,
@@ -54,6 +65,10 @@ module.exports = {
       // both options are optional
       filename: "[name].css",
       chunkFilename: "[id].css"
-    })
+    }),
+    new copyPlugin([{
+      from: 'app/images',
+      to: 'images'
+    }])
   ]
 };

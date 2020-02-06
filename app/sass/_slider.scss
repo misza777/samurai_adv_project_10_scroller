@@ -1,0 +1,37 @@
+.slider {
+    max-width: $image-width;
+    margin: 0 auto;
+    &__images-container {
+        position: relative;
+        width: 100%;
+        //patent na paski u dolu, problem iframe youtube
+        padding-bottom: $image-height-proportion;
+    }
+    &__image-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        overflow: hidden;
+        height: 90%;
+        & img {
+            top: 50%;
+            transform: translateY(-50%);
+            width: $image-width; 
+            position: absolute;
+            //zeby user nie mogl dotknac
+            user-select: none;
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -o-user-select: none;
+           }
+        
+    }
+    &__image-container--first {
+        width: 100%;
+    }
+    &__image-container--second {
+        width: 50%;
+    }    
+}
+
+

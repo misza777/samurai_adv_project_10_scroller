@@ -1,0 +1,25 @@
+.slider_divider {
+position: absolute;
+width: 3px;
+height: 90%;
+top: 0;
+left: 50%;
+transform: translateX(-50%);
+background-color: #000;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.slider__handle {
+    border-radius: 50%;
+    // bedzie na srodku
+    width: 40px;
+    height: 40px; 
+    flex: 0 0 auto;
+    background-color: rgba(255, 255, 255, 0.6) ;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    cursor: pointer;
+}
