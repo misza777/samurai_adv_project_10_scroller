@@ -44,7 +44,17 @@ const move = (clientX) => {
 const initEvents= ()=> {
     handleEl.addEventListener('mousedown', () => {dragging = true});
     handleEl.addEventListener('mouseup', () => {dragging = false});
-    
+    //urzadzenia mobilne 
+    handleEl.addEventListener('touchstart', () => {dragging = true});
+    handleEl.addEventListener('touchend', () => {dragging = false});
+
+    window.addEventListener('touchmove', (event) => {
+        if (dragging) {
+            move(event.touches[0].clientX);
+        } else
+         return
+    });
+
     //przekazujemy event
     window.addEventListener('mousemove', (event) => {
         if (dragging) {
