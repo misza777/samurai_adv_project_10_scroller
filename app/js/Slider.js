@@ -13,9 +13,6 @@ export default class Slider {
         this.init();
     }
 
-
-
-
     // metody
 
     // clientX to przesuniecie w lini poziomej w px - potrzebna do slidera
@@ -77,16 +74,18 @@ export default class Slider {
 
     adjustImagesSize = () => {
         this.imagesContainerWidth = this.imagesContainerEl.offsetWidth;
+        // ustalenie szerolosci wraz z borderem i paddidngiem
         this.imgEl1.style.width = `${this.imagesContainerWidth}px`;
         this.imgEl2.style.width = this.imagesContainerWidth + 'px';
+        // ustalenie odlegosci od lewej krawedzi 
         this.imagesContainerLeftOffset = this.imagesContainerEl.offsetLeft;
+
         window.addEventListener('resize', this.adjustImagesSize);
     }
 
     init() {
         this.events();
         this.adjustImagesSize();
-
     }
 
 }
